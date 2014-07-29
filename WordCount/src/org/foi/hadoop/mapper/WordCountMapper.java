@@ -21,6 +21,8 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
         while (tokenizer.hasMoreTokens()) {
             word.set(tokenizer.nextToken());
             String cleanWord = word.toString().replaceAll("(\\.|,|!|\\?)", "");
+            // version with lowercase letters
+            // String cleanWord = word.toString().replaceAll("(\\.|,|!|\\?)", "");
             word.set(cleanWord);
             context.write(word, one);
         }
