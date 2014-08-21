@@ -1,0 +1,20 @@
+<config>
+	<modules>
+		<Hive_Test>
+			<version>0.0.1</version>
+		</Hive_Test>
+	</modules>
+
+    <frontend>
+        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <hive_test before="Mage_Catalog">Hive_Test</hive_test>
+                    </modules>
+                </args>
+            </catalog>
+        </routers>
+    </frontend>
+
+</config>

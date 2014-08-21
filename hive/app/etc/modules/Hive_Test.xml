@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Hive_Test>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Hive_Test>
+  </modules>
+</config>
