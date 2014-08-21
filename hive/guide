@@ -1,0 +1,9 @@
+Pokreni hive server:
+	./hive --service hiveserver -p 10001
+
+LOAD DATA:
+	load data inpath "D:/data files/sample.txt" into table sample;
+
+
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
