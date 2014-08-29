@@ -7,3 +7,105 @@ LOAD DATA:
 
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
+
+hive> show tables;
+2014-08-29 00:52:36.104 GMT Thread[main,5,main] java.io.FileNotFoundException: derby.log (Permission denied)
+OK
+src
+test
+Time taken: 3.344 seconds
+
+hive> select * from test;
+OK
+383	Carnegie Alpaca Throw	2014-08-21 12:12:49
+380	Shea Enfused Hydrating Body Lotion	2014-08-21 12:12:54
+410	Chelsea Tee	2014-08-21 12:12:57
+408	Chelsea Tee	2014-08-21 12:13:26
+409	Chelsea Tee	2014-08-21 12:13:34
+410	Chelsea Tee	2014-08-21 12:13:38
+411	Merino V-neck Pullover Sweater	2014-08-21 12:13:41
+412	Lexington Cardigan Sweater	2014-08-21 12:13:47
+413	Core Striped Sport Shirt	2014-08-21 12:13:51
+413	Core Striped Sport Shirt	2014-08-21 12:25:11
+Time taken: 1.25 seconds
+
+
+
+hive> SELECT DISTINCT product_name from test;
+Total MapReduce jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapred.reduce.tasks=<number>
+Starting Job = job_201408282036_0002, Tracking URL = http://0.0.0.0:50030/jobdetails.jsp?jobid=job_201408282036_0002
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -Dmapred.job.tracker=0.0.0.0:8021 -kill job_201408282036_0002
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2014-08-28 20:54:54,292 Stage-1 map = 0%,  reduce = 0%
+2014-08-28 20:54:59,566 Stage-1 map = 100%,  reduce = 0%
+2014-08-28 20:55:12,769 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.01 sec
+2014-08-28 20:55:13,798 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.01 sec
+2014-08-28 20:55:14,812 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.01 sec
+2014-08-28 20:55:15,826 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 2.01 sec
+MapReduce Total cumulative CPU time: 2 seconds 10 msec
+Ended Job = job_201408282036_0002
+MapReduce Jobs Launched: 
+Job 0: Map: 1  Reduce: 1   Cumulative CPU: 2.01 sec   HDFS Read: 0 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 10 msec
+OK
+Carnegie Alpaca Throw
+Chelsea Tee
+Core Striped Sport Shirt
+Lexington Cardigan Sweater
+Merino V-neck Pullover Sweater
+Shea Enfused Hydrating Body Lotion
+Time taken: 37.997 seconds
+
+
+
+http://hortonworks.com/wp-content/uploads/downloads/2013/08/Hortonworks.CheatSheet.SQLtoHive.pdf
+
+
+hive> select product_name, count(1) AS count from test group by product_name; 
+Total MapReduce jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapred.reduce.tasks=<number>
+Starting Job = job_201408282036_0004, Tracking URL = http://0.0.0.0:50030/jobdetails.jsp?jobid=job_201408282036_0004
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -Dmapred.job.tracker=0.0.0.0:8021 -kill job_201408282036_0004
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2014-08-28 21:06:32,699 Stage-1 map = 0%,  reduce = 0%
+2014-08-28 21:06:35,728 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 0.84 sec
+2014-08-28 21:06:36,738 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 0.84 sec
+2014-08-28 21:06:37,748 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 0.84 sec
+2014-08-28 21:06:38,761 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:39,771 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:40,781 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:41,793 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:42,802 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:43,815 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:44,821 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:45,828 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+2014-08-28 21:06:46,836 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 1.95 sec
+MapReduce Total cumulative CPU time: 1 seconds 950 msec
+Ended Job = job_201408282036_0004
+MapReduce Jobs Launched: 
+Job 0: Map: 1  Reduce: 1   Cumulative CPU: 1.95 sec   HDFS Read: 0 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 950 msec
+OK
+Carnegie Alpaca Throw	1
+Chelsea Tee	4
+Core Striped Sport Shirt	2
+Lexington Cardigan Sweater	1
+Merino V-neck Pullover Sweater	1
+Shea Enfused Hydrating Body Lotion	1
+Time taken: 22.158 seconds
+
